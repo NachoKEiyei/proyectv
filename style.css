@@ -86,9 +86,14 @@ a { color: inherit; }
 
 .logo-mark {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   text-decoration: none;
+}
+
+.logo-img {
+  height: 48px;
+  width: auto;
 }
 
 .logo-mark .logo-text {
@@ -259,6 +264,8 @@ a { color: inherit; }
 }
 
 .btn-secondary:hover { border-color: var(--amber-500); }
+
+.btn-secondary svg { width: 16px; height: 16px; flex: none; }
 
 /* --- Section headings ----------------------------------------- */
 
