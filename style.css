@@ -6,19 +6,19 @@
    ============================================================ */
 
 :root {
-  --graphite-950: #14171a;
-  --graphite-900: #1a1d20;
-  --graphite-800: #24282c;
-  --graphite-700: #32373c;
-  --graphite-600: #4a5157;
-  --steel-400: #8a9199;
+  --graphite-950: #0a1526;
+  --graphite-900: #0f1e38;
+  --graphite-800: #16294a;
+  --graphite-700: #1e3564;
+  --graphite-600: #35508f;
+  --steel-400: #93a1c4;
   --paper-100: #f5f3ee;
   --paper-050: #faf8f4;
-  --amber-500: #f2a900;
-  --amber-400: #ffc233;
-  --rust-600: #c2410c;
-  --rust-500: #d9530f;
-  --line: rgba(245, 243, 238, 0.12);
+  --amber-500: #ffc418;
+  --amber-400: #ffd54f;
+  --rust-600: #cb0417;
+  --rust-500: #e6293a;
+  --line: rgba(245, 243, 238, 0.14);
 
   --font-display: "Oswald", "Arial Narrow", sans-serif;
   --font-body: "Inter", -apple-system, sans-serif;
@@ -212,7 +212,7 @@ a { color: inherit; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(180deg, rgba(20,23,26,0) 0%, var(--graphite-900) 100%),
+    linear-gradient(180deg, rgba(10,21,38,0) 0%, var(--graphite-900) 100%),
     repeating-linear-gradient(90deg, var(--line) 0 1px, transparent 1px 120px);
   pointer-events: none;
 }
@@ -334,7 +334,9 @@ a { color: inherit; }
 .portal-card {
   position: relative;
   display: block;
-  background: var(--graphite-800);
+  background-color: var(--graphite-800);
+  background-size: cover;
+  background-position: center;
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 40px 32px;
@@ -345,6 +347,24 @@ a { color: inherit; }
 }
 
 .portal-card:hover { transform: translateY(-4px); border-color: var(--amber-500); }
+
+/* dark layer that "erases" away on hover to reveal the photo beneath */
+.portal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--graphite-800);
+  opacity: 0.4;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.portal-card:hover::before { opacity: 0.6; }
+
+.portal-card > * {
+  position: relative;
+  z-index: 1;
+}
 
 .portal-card .portal-index {
   font-family: var(--font-mono);
@@ -362,7 +382,7 @@ a { color: inherit; }
 }
 
 .portal-card p {
-  color: var(--steel-400);
+  color: var(--paper-100);
   margin: 0 0 26px;
   max-width: 34ch;
 }
@@ -381,27 +401,9 @@ a { color: inherit; }
 .portal-card .portal-go svg { width: 16px; height: 16px; transition: transform 0.18s ease; }
 .portal-card:hover .portal-go svg { transform: translateX(4px); }
 
-.portal-card.mining::after {
-  content: "";
-  position: absolute;
-  right: -30px;
-  bottom: -30px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(217,83,15,0.18), transparent 70%);
-}
+.portal-card.mining { background-image: url("mineria-bg.jpg"); }
 
-.portal-card.hardware::after {
-  content: "";
-  position: absolute;
-  right: -30px;
-  bottom: -30px;
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(242,169,0,0.18), transparent 70%);
-}
+.portal-card.hardware { background-image: url("ferreteria-bg.jpg"); }
 
 /* --- Sub-page hero (smaller) ------------------------------------ */
 
@@ -465,6 +467,57 @@ a { color: inherit; }
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   margin-top: 10px;
+}
+
+.photo-real {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  cursor: zoom-in;
+  transition: opacity 0.15s ease;
+}
+
+.photo-real:hover { opacity: 0.85; }
+
+/* --- Lightbox (click a photo to view full size) --- */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgba(10, 21, 38, 0.92);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  cursor: zoom-out;
+}
+
+.lightbox.open { display: flex; }
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 4px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 22px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--graphite-800);
+  border: 1px solid var(--line);
+  color: var(--paper-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 /* --- Ferretería toggles ------------------------------------------- */
