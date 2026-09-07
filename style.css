@@ -454,38 +454,35 @@ a { color: inherit; }
 }
 
 .material-card {
-  position: relative;
-  overflow: hidden;
-  background-color: var(--graphite-800);
-  background-size: cover;
-  background-position: center;
+  background: var(--graphite-800);
   border: 1px solid var(--line);
   border-radius: 5px;
   padding: 22px 24px;
+}
+
+/* --- Valve cards: photo on top (fixed crop), text below on solid ground --- */
+
+.valve-card {
+  background: var(--graphite-800);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  overflow: hidden;
   transition: border-color 0.18s ease;
 }
 
-.material-card:hover { border-color: var(--amber-500); }
+.valve-card:hover { border-color: var(--amber-500); }
 
-/* dark layer that "erases" away on hover to reveal the photo beneath,
-   same treatment as the Minería/Ferretería cards on the homepage */
-.material-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--graphite-800);
-  opacity: 1;
-  transition: opacity 0.4s ease;
-  z-index: 0;
+.valve-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background-color: var(--graphite-700);
+  background-size: cover;
+  background-position: center;
 }
 
-.material-card:hover::before { opacity: 0.5; }
+.valve-body { padding: 20px 24px 22px; }
 
-.material-card > * {
-  position: relative;
-  z-index: 1;
-}
-
+.valve-body h4,
 .material-card h4 {
   font-family: var(--font-display);
   font-size: 19px;
@@ -495,10 +492,13 @@ a { color: inherit; }
   color: var(--amber-500);
 }
 
+.valve-body .m-desc,
 .material-card .m-desc { font-size: 14.5px; color: var(--paper-100); margin: 0 0 12px; }
 
+.valve-body dl,
 .material-card dl { margin: 0; font-size: 13.5px; }
 
+.valve-body dt,
 .material-card dt {
   font-family: var(--font-mono);
   text-transform: uppercase;
@@ -508,6 +508,7 @@ a { color: inherit; }
   margin-top: 10px;
 }
 
+.valve-body dd,
 .material-card dd { margin: 3px 0 0; color: var(--paper-100); }
 
 .photo-grid {
