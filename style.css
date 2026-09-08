@@ -423,9 +423,9 @@ a { color: inherit; }
 .portal-card .portal-go svg { width: 16px; height: 16px; transition: transform 0.18s ease; }
 .portal-card:hover .portal-go svg { transform: translateX(4px); }
 
-.portal-card.mining { background-image: url("mineria-bg.jpg"); }
+.portal-card.mining { background-image: url("images/mineria/mineria-bg.jpg"); }
 
-.portal-card.hardware { background-image: url("ferreteria-bg.jpg"); }
+.portal-card.hardware { background-image: url("images/ferreteria/ferreteria-bg.jpg"); }
 
 /* --- Sub-page hero (smaller) ------------------------------------ */
 
