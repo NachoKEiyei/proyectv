@@ -691,33 +691,69 @@ footer {
   margin-top: 40px;
 }
 
-footer .wrap {
+footer .footer-grid {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 28px;
+}
+
+.footer-brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 footer .foot-brand {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: var(--steel-400);
-  font-size: 14px;
+  color: var(--paper-100);
+  font-size: 18px;
 }
 
-footer .foot-links {
+.foot-nav {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+}
+
+.foot-nav a { color: var(--steel-400); text-decoration: none; }
+.foot-nav a:hover { color: var(--amber-500); }
+
+.foot-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
   font-family: var(--font-mono);
   font-size: 12.5px;
   color: var(--steel-400);
 }
 
-footer .foot-links a { text-decoration: none; }
-footer .foot-links a:hover { color: var(--amber-500); }
+.foot-contact a,
+.foot-contact span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--steel-400);
+  text-decoration: none;
+}
+
+.foot-contact a:hover { color: var(--amber-500); }
+
+.foot-icon {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  color: var(--amber-500);
+}
+
+@media (max-width: 640px) {
+  .foot-contact { align-items: flex-start; }
+}
 
 /* --- Floating WhatsApp button (mobile-friendly, all pages) ----- */
 
